@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "free",
+        "request": "launch",
+        "type": "dart",
+        "program": "lib/main_development.dart",
+        "args": ["--flavor", "free", "--target", "lib/main_simp.dart" ]
+      },
+      {
+        "name": "free",
+        "request": "launch",
+        "type": "dart",
+        "program": "lib/main_development.dart",
+        "args": ["--flavor", "paid", "--target", "lib/main_wire.dart" ]
+      }
+    ],
+    "compounds": []
+  }

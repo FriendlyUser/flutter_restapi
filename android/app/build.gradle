@@ -69,3 +69,20 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
+// favours in flutter
+
+flavorDimensions "default"
+
+productFlavors {
+    free {
+        dimension "default"
+        resValue "string", "simpsonsviewer", "free flavor example"
+        applicationIdSuffix ".free"
+    }
+    paid {
+        dimension "default"
+        resValue "string", "wireviewer", "paid flavor example"
+        applicationIdSuffix ".paid"
+    }
+}

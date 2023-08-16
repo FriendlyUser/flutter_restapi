@@ -3,36 +3,22 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:simpsonsviewer/types.dart';
 import 'package:simpsonsviewer/utils.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Simpson Characters',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Simpson Characters'),
-    );
-  }
-}
-
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title, required this.flavor}) : super(key: key);
 
   final String title;
+  final String flavor;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState(flavor);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  final String flavor;
+
+  _MyHomePageState(this.flavor);
+
   List<RelatedTopic> characters = [];
   List<RelatedTopic> filteredCharacters = [];
   TextEditingController searchController = TextEditingController();
@@ -58,6 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   fetchCharacters() async {
+    var url = "http://api.duckduckgo.com/?q=simpsons+characters&format=json";
+    if (this.flavor == "paid") {
+      url = "http://api.duckduckgo.com/?q=the+wire+characters&format=json";
+    }
     var response = await http.get(
       Uri.parse('https://api.jsonbin.io/v3/b/64dd31fa8e4aa6225ed10c55'),
       headers: {
@@ -147,9 +137,7 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Image.network("https://duckduckgo.com" + character.icon.url, errorBuilder: (context, error, stackTrace) {
-              return Image.network(
-                'https://cdn.playeternalreturn.com/event/season1/firstseason/sec03/ico_notebook.png',
-              );
+              return Image(image: AssetImage('assets/ico_notebook.png'));
             },),
             Text(character.result),
           ],
