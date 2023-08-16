@@ -118,7 +118,6 @@ class _MyHomePageState extends State<MyHomePage> {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(filteredCharacters[index].fullName),
-            subtitle: Text("Do something here"),
             onTap: () {
               Navigator.push(
                 context,
@@ -147,7 +146,7 @@ class DetailScreen extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            Image.network(character.icon.url, errorBuilder: (context, error, stackTrace) {
+            Image.network("https://duckduckgo.com" + character.icon.url, errorBuilder: (context, error, stackTrace) {
               return Image.network(
                 'https://cdn.playeternalreturn.com/event/season1/firstseason/sec03/ico_notebook.png',
               );
