@@ -1,16 +1,14 @@
 # simpson_character_viewer
 
-A new Flutter project.
 
-## Getting Started
+to run 
 
-This project is a starting point for a Flutter application.
+```dart
+flutter run --flavor free --target lib/main_simp.dart
+```
 
-A few resources to get you started if this is your first Flutter project:
+or for the variety use
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+flutter run --flavor paid --target lib/main_wire.dart
+```

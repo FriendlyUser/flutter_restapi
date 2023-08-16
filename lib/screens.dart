@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:simpsonsviewer/types.dart';
 import 'package:simpsonsviewer/utils.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title, required this.flavor}) : super(key: key);
 
@@ -49,11 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       url = "http://api.duckduckgo.com/?q=the+wire+characters&format=json";
     }
     var response = await http.get(
-      Uri.parse('https://api.jsonbin.io/v3/b/64dd31fa8e4aa6225ed10c55'),
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Master-Key': r"$2b$10$WQO9z7/PmRRHQ4JeXpqdj.X9n6Lh06FluuAn/Ejd.BIOPyL4mfTQ.", 
-      }
+      Uri.parse(url),
     );
     if (response.statusCode == 200) {
       setState(() {
@@ -128,6 +125,7 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var result = character.result;
     return Scaffold(
       appBar: AppBar(
         title: Text(character.fullName),
@@ -146,3 +144,4 @@ class DetailScreen extends StatelessWidget {
     );
   }
 }
+
