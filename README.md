@@ -7,7 +7,7 @@ to run
 flutter run --flavor free --target lib/main_simp.dart
 ```
 
-or for the variety use
+or for the alterative flavour use
 
 ```dart
 flutter run --flavor paid --target lib/main_wire.dart
